@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  test:
+    build: .
+    command: npm run test:coverage
+    volumes:
+      - .:/app
+      - /app/node_modules
