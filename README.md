@@ -60,7 +60,6 @@ npm test
 - `npm run test:coverage` - coverage report + threshold gate
 - `npm run lint` - typecheck only
 - `npm run build` - compile TS
-- `npm run dev` - start Vite (optional)
 
 ## Notable examples (where to look)
 - `src/async/retry.ts` + `test/async/retry.test.ts` — async retry logic, backoff, abort handling, and timer control

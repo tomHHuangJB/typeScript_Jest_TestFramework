@@ -37,12 +37,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage
+          name: coverage-node-${{ matrix.node }}
           path: coverage
 
       - name: Upload test logs (on failure)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs
+          name: test-logs-node-${{ matrix.node }}
           path: test-output.log
