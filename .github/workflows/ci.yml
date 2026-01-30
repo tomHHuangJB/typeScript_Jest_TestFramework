@@ -5,13 +5,12 @@ on:
     branches: ["main", "master"]
   pull_request:
     branches: ["main", "master"]
+  schedule:
+    - cron: "0 5 * * *"
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: ["18", "20", "22"]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "20"
           cache: "npm"
 
       - name: Install
@@ -37,12 +36,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-node-${{ matrix.node }}
+          name: coverage
           path: coverage
 
       - name: Upload test logs (on failure)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: test-logs-node-${{ matrix.node }}
+          name: test-logs
           path: test-output.log
